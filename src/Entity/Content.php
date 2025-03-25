@@ -77,7 +77,7 @@ class Content
 
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank]
-    #[Groups(['content:update', 'content:read-item'])]
+    #[Groups(['content:update', 'content:read-item', 'content:read'])]
     public ?string $content = null;
 
     #[ORM\Column(type: 'string', length: 255)]
