@@ -40,7 +40,9 @@ final readonly class CreateUserProcessor implements ProcessorInterface
     ): object {
         $user = new User();
         $this->validator->validate($data->email, new UnregistredEmail());
-
+        if (!filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException('Invalid email address');
+        }
         $user->email = $data->email;
         $user->password = $this->hasher->hashPassword($user, $data->password);
         $user->firstname = $data->firstname;
