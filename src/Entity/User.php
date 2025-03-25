@@ -56,6 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180)]
     #[Assert\Email]
     #[Assert\Length(min: 5, max: 180)]
+    #[Groups(['user:update'])]
     public string $email;
 
     /**
