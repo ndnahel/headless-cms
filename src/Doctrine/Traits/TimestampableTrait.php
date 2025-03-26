@@ -13,12 +13,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
 trait TimestampableTrait
 {
     #[ORM\Column(type: Types::DATETIME_MUTABLE, insertable: false, updatable: false, options: ['default' => 'CURRENT_TIMESTAMP'], generated: 'INSERT')]
-    #[Groups(['comment:read'])]
+    #[Groups(['content:read', 'comment:read'])]
     #[ApiProperty(readable: true, writable: false)]
     public ?DateTime $createdAt = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, insertable: false, updatable: false, columnDefinition: 'DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP', generated: 'ALWAYS')]
-    #[Groups(['comment:read'])]
+    #[Groups(['content:read', 'comment:read'])]
     #[ApiProperty(readable: true, writable: false)]
     public ?DateTime $updatedAt = null;
 }
