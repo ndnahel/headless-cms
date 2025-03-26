@@ -14,6 +14,7 @@ use App\Doctrine\Enum\TableEnum;
 use App\Doctrine\Traits\TimestampableTrait;
 use App\Doctrine\Traits\UuidTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity]
 #[ORM\Table(name: TableEnum::UPLOAD)]
@@ -33,6 +34,7 @@ class Upload
     public ?string $filename = null;
 
     #[ORM\Column]
+    #[Groups(['content:read', 'content:update'])]
     public ?string $path = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
